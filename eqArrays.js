@@ -3,7 +3,9 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(firstArray, secArray) {
-  if (firstArray.length !== secArray.length) {
+  if (firstArray === secArray) {
+    return true;
+  } else if (firstArray.length !== secArray.length) {
     return false;
   }
   for (let i = 0; i < firstArray.length; i++) {
