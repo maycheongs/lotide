@@ -1,7 +1,8 @@
 const eqArrays = function(firstArray, secArray) {
   if (firstArray === secArray) {
     return true;
-  } else if (firstArray.length !== secArray.length) {
+  }
+  if (firstArray.length !== secArray.length) {
     return false;
   }
   for (let i = 0; i < firstArray.length; i++) {
@@ -31,4 +32,4 @@ const letterPositions = function(sentence) {
 };
 
 assertArraysEqual(letterPositions("lighthouse in the house").h, [3,5,15,18]);
-assertArraysEqual(letterPositions("lighthouse in the house")[' '], undefined)
+assertArraysEqual(letterPositions("lighthouse in the house")[' '], undefined);
