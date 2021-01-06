@@ -14,21 +14,23 @@ const assertArraysEqual = function(actual, expected) {
 
 };
 
-const flatten = array => {
+const middle = array => {
   let result = [];
-  for (let i = 0; i < array.length; i++) {
-    let element = array[i];
-    if (Array.isArray(element)) {
-      for (let j = 0; j < element.length; j++) {
-        result.push(element[j]);
-      }
+
+  let midIndex = (array.length - 1) / 2;
+  if (Math.floor(midIndex)) {
+    if (Number.isInteger(midIndex)) {
+      result.push(array[midIndex]);
     } else {
-      result.push(element);
+      result.push(array[Math.floor(midIndex)], array[Math.ceil(midIndex)]);
     }
   } return result;
 };
-  
-  
 
 
-assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]);
+
+
+assertArraysEqual(middle([1]), []);
+assertArraysEqual(middle([1,2]), []);
+assertArraysEqual(middle([1,2,3]), [2]);
+assertArraysEqual(middle([1,2,3,4]), [2,3]);
