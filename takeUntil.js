@@ -37,5 +37,5 @@ const assertArraysEqual = function(actual, expected) {
 };
 //  ******************************************
 
-assertArraysEqual(takeUntil([1,2,3,4,5,6,7,8,9,10], x => x === 10), [1,2,3,4,5,6,7,8,9]);
+assertArraysEqual(takeUntil([1,2,3,4,5,6,7,8,9,10], x => x > 10), [1,2,3,4,5,6,7,8,9,10]);
 assertArraysEqual(takeUntil(["I've", "been", "to", "Hollywood", ",", "I've", "been", "to", "Redwood"], x => x === ','), [ 'I\'ve', 'been', 'to', 'Hollywood' ]);
