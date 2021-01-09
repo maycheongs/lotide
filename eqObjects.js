@@ -3,47 +3,38 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(firstArray, secArray) {
-  if (firstArray === secArray) {
-    return true;
+  if (firstArray === secArray) return true; //support undefined and primitives
+  if (!Array.isArray(firstArray)) return false;
+  if (firstArray.length !== secArray.length) return false;
+  for (let index in firstArray) {
+    if (firstArray[index] !== secArray[index]) return false;
   }
-  if (firstArray.length !== secArray.length) {
-    return false;
-  }
-  for (let i = 0; i < firstArray.length; i++) {
-    if (firstArray[i] !== secArray[i]) {
-      return false;
-    }
-  } return true;
+  return true;
 };
 
 const eqObjects = function(object1, object2) {
-  if (object1 === object2) {
-    return true;
-  }
+
+  //test if no. of keys are the same
   if (Object.keys(object1).length !== Object.keys(object2).length) {
     return false;
   }
 
   for (let key in object1) {
-    if (!eqArrays(object1[key], object2[key])) {
+    //recursive object equality
+    if (typeof object1[key] === 'object' && !Array.isArray(object1[key])) {
+      if (!eqObjects(object1[key], object2[key])) {
+        return false;
+      }
+    //if value is array or primitive
+    } else if (!eqArrays(object1[key],object2[key])) {
       return false;
     }
   }
-
   return true;
 };
 
 
-const ab = { a: "1", b: "2" };
-const ba = { b: "2", a: "1" };
+console.log(eqObjects({ a: { z: { h: 1 }}, b: 2 }, { a: { z: { h: 1 }}, b: 2 })); // => true
 
-assertEqual(ab, ba);
-
-console.log(eqObjects(ab, ba));
-
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-console.log(eqObjects(cd, dc)); // => true
-
-const cd2 = { c: "1", d: ["2", 3, 4] };
-console.log(eqObjects(cd, cd2)); // => false
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })); // => false
