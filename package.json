@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
+  "name": "@mayc/lotide",
   "version": "1.0.0",
-  "description": "",
-  "main": "assertArraysEqual.js",
+  "description": "mini lodash",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/maycheongs/lotide.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "may cheong",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/maycheongs/lotide/issues"
@@ -23,5 +23,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^8.2.1"
-  }
+  },
+  "dependencies": {}
 }
