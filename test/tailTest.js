@@ -1,4 +1,4 @@
-const tail = require('../tail');
+const { tail, assertEqual } = require('../tail');
 
 
 // Test Case: Check the original array
