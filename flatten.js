@@ -1,21 +1,3 @@
-const eqArrays = function(firstArray, secArray) {
-  if (firstArray === secArray) {
-    return true;
-  }
-  if (firstArray.length !== secArray.length) {
-    return false;
-  }
-  for (let i = 0; i < firstArray.length; i++) {
-    if (firstArray[i] !== secArray[i]) {
-      return false;
-    }
-  } return true;
-};
-
-const assertArraysEqual = function(actual, expected) {
-  eqArrays(actual, expected) ? console.log(`✅Assertion Passed: ${actual} is equal ${expected}`) : console.log(`❗Assertion Failed: ${actual} does not equal ${expected} (Check Type)`);
-
-};
 
 const flatten = array => {
   let result = [];
@@ -32,6 +14,6 @@ const flatten = array => {
 };
   
   
+module.exports = flatten;
 
-
-assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]);
+// assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]);
